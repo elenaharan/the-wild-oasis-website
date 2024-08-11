@@ -8,6 +8,9 @@ Developing this application with ``Next.js App router`` would also help to explo
 <b>The Next.js documentation:</b>
 <a>https://nextjs.org/docs</a>
 
+<b>To update this project to the latest Next.js version, run the following command in the project folder:</b><br />
+``npm install next@latest react@latest react-dom@latest eslint-config-next@latest``
+
 
 # The Wild Oasis website
 
