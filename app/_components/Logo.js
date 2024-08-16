@@ -1,6 +1,8 @@
+import Link from "next/link";
+
 function Logo() {
   return (
-    <a
+    <Link
       href="/"
       className="flex items-center gap-4 z-10"
     >
@@ -13,7 +15,7 @@ function Logo() {
       <span className="text-xl font-semibold text-primary-100">
         The Wild Oasis
       </span>
-    </a>
+    </Link>
   );
 }
 
