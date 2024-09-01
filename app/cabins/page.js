@@ -2,14 +2,16 @@ import { Suspense } from "react";
 import CabinsList from "../_components/CabinsList";
 import Spinner from "../_components/Spinner";
 
-//this needs to be a value, and not a calculation
+//revalidate needs to be a value, and not result of a calculation
 // export const revalidate = 0;
 
 export const metadata = {
   title: "Cabins",
 };
 
-export default function Page() {
+export default function Page({ searchParams }) {
+  const filter = searchParams?.capacity ?? "all";
+
   return (
     <div>
       <h1 className="text-4xl mb-5 text-accent-400 font-medium">
@@ -24,7 +26,7 @@ export default function Page() {
         Welcome to paradise.
       </p>
       <Suspense fallback={<Spinner />}>
-        <CabinsList />
+        <CabinsList filter={filter} />
       </Suspense>
     </div>
   );
