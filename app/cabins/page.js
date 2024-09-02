@@ -1,9 +1,14 @@
 import { Suspense } from "react";
 import CabinsList from "../_components/CabinsList";
 import Spinner from "../_components/Spinner";
+import Filter from "../_components/Filter";
 
 //revalidate needs to be a value, and not result of a calculation
 // export const revalidate = 0;
+
+/** if we are using searchParams prop, the page automatically becomes dynamically rendered, so revalidate no longer has any effect,
+as it only applies to static pages **/
+export const revalidate = 3600;
 
 export const metadata = {
   title: "Cabins",
@@ -25,6 +30,9 @@ export default function Page({ searchParams }) {
         home away from home. The perfect spot for a peaceful, calm vacation.
         Welcome to paradise.
       </p>
+      <div className="flex justify-end mb-8">
+        <Filter />
+      </div>
       <Suspense fallback={<Spinner />}>
         <CabinsList filter={filter} />
       </Suspense>
