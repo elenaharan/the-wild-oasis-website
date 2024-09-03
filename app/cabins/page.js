@@ -33,7 +33,10 @@ export default function Page({ searchParams }) {
       <div className="flex justify-end mb-8">
         <Filter />
       </div>
-      <Suspense fallback={<Spinner />}>
+      <Suspense
+        fallback={<Spinner />}
+        key={filter}
+      >
         <CabinsList filter={filter} />
       </Suspense>
     </div>
