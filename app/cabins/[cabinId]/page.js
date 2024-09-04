@@ -1,5 +1,12 @@
+import DateSelector from "@/app/_components/DateSelector";
+import ReservationForm from "@/app/_components/ReservationForm";
 import TextExpander from "@/app/_components/TextExpander";
-import { getCabin, getCabins } from "@/app/_lib/data-service";
+import {
+  getBookedDatesByCabinId,
+  getCabin,
+  getCabins,
+  getSettings,
+} from "@/app/_lib/data-service";
 import { EyeSlashIcon, MapPinIcon, UsersIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 
@@ -11,8 +18,13 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export async function generateStaticParams() {
-  const cabins = await getCabins();
+export async function generateStaticParams({ params }) {
+  const [cabin, settings, bookedDates] = await Promise.all([
+    getCabin(params.cabinId),
+    getSettings(),
+    getBookedDatesByCabinId(params.cabinId),
+  ]);
+
   const ids = cabins.map((cabin) => ({
     cabinId: String(cabin.id),
   }));
@@ -71,10 +83,13 @@ export default async function Page({ params }) {
       </div>
 
       <div>
-        <h2 className="text-5xl font-semibold text-center">
+        <h2 className="text-5xl font-semibold text-center text-accent-400 mb-10">
           Reserve {name} today. Pay on arrival.
         </h2>
-        <div></div>
+        <div className="grid grid-cols-2 border border-primary-800 min-h-[400px]">
+          <DateSelector />
+          <ReservationForm />
+        </div>
       </div>
     </div>
   );
