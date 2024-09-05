@@ -1,5 +1,4 @@
-import DateSelector from "@/app/_components/DateSelector";
-import ReservationForm from "@/app/_components/ReservationForm";
+import Reservation from "@/app/_components/Reservation";
 import TextExpander from "@/app/_components/TextExpander";
 import {
   getBookedDatesByCabinId,
@@ -86,10 +85,7 @@ export default async function Page({ params }) {
         <h2 className="text-5xl font-semibold text-center text-accent-400 mb-10">
           Reserve {name} today. Pay on arrival.
         </h2>
-        <div className="grid grid-cols-2 border border-primary-800 min-h-[400px]">
-          <DateSelector />
-          <ReservationForm />
-        </div>
+        <Reservation />
       </div>
     </div>
   );
