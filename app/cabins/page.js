@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import CabinsList from "../_components/CabinsList";
 import Spinner from "../_components/Spinner";
 import Filter from "../_components/Filter";
+import ReservationReminder from "../_components/ReservationReminder";
 
 //revalidate needs to be a value, and not result of a calculation
 // export const revalidate = 0;
@@ -38,6 +39,7 @@ export default function Page({ searchParams }) {
         key={filter}
       >
         <CabinsList filter={filter} />
+        <ReservationReminder />
       </Suspense>
     </div>
   );
