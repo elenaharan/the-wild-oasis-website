@@ -11,6 +11,8 @@ const authConfig = {
 };
 
 export const {
+  //the auth function can be called in server components
+  //it can return a session for a currently logged in user
   auth,
   handlers: { GET, POST },
 } = NextAuth(authConfig);
