@@ -22,5 +22,7 @@ export const {
   //the auth function can be called in server components
   //it can return a session for a currently logged in user
   auth,
+  signIn,
+  signOut,
   handlers: { GET, POST },
 } = NextAuth(authConfig);
