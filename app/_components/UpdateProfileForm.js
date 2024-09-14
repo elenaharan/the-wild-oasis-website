@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-function UpdateProfileForm({ children }) {
+function UpdateProfileForm({ children, guest }) {
   const [count, setCount] = useState();
 
   //Change
