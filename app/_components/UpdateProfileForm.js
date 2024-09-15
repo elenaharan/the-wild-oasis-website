@@ -1,20 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { updateGuest } from "../_lib/actions";
 
 function UpdateProfileForm({ children, guest }) {
-  const [count, setCount] = useState();
-
-  //Change
-  const countryFlag = "pt.jpg";
-  const nationality = "portugal";
+  const { fullName, email, nationality, nationalID, countryFlag } = guest;
 
   return (
-    <form className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col">
+    <form
+      action={updateGuest}
+      className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col"
+    >
       <div className="space-y-2">
         <label>Full name</label>
         <input
+          defaultValue={fullName}
           disabled
+          //name needs to match the name of the field in the supabase DB
+          name="fullName"
           className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-gray-400"
         />
       </div>
@@ -22,6 +24,8 @@ function UpdateProfileForm({ children, guest }) {
       <div className="space-y-2">
         <label>Email address</label>
         <input
+          defaultValue={email}
+          name="email"
           disabled
           className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-gray-400"
         />
@@ -44,6 +48,7 @@ function UpdateProfileForm({ children, guest }) {
         <input
           name="nationalID"
           className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
+          defaultValue={nationalID}
         />
       </div>
 
