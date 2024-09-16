@@ -9,7 +9,17 @@ export async function updateGuest(formData) {
 
   const nationalID = formData.get("nationalID");
   const [nationality, countryFlag] = formData.get("nationality").split("%");
-  console.log("nationality::::", nationality, countryFlag);
+
+  if (!/^[a-zA-Z0-9]{6,12}$/.test(nationalID))
+    throw new Error("Please provide a valid national ID");
+
+  const updateData = {
+    nationality,
+    countryFlag,
+    nationalID,
+  };
+
+  console.log(updateData);
 }
 
 export async function signInAction() {
