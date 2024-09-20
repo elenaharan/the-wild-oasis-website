@@ -1,5 +1,8 @@
+import { getBooking } from "@/app/_lib/data-service";
+
 export default async function Page({ params }) {
   const { reservationId } = params;
+  const booking = await getBooking(reservationId);
   const maxCapacity = 23;
 
   return (
