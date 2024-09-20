@@ -1,6 +1,5 @@
-export default function Page() {
-  // CHANGE
-  const reservationId = 23;
+export default async function Page({ params }) {
+  const { reservationId } = params;
   const maxCapacity = 23;
 
   return (
