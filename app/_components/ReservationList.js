@@ -4,7 +4,10 @@ import ReservationCard from "./ReservationCard";
 import { useOptimistic } from "react";
 
 function ReservationList({ bookings }) {
-  useOptimistic();
+  const [optimisticBookings, optimisticDelete] = useOptimistic(
+    bookings,
+    () => {}
+  );
 
   return (
     <ul className="space-y-6">
