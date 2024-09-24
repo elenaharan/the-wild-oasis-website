@@ -19,6 +19,8 @@ function ReservationList({ bookings }) {
   }
 
   return (
+    /*optimisticBookings will be the same in the beginning as bookings, before
+    the async operation*/
     <ul className="space-y-6">
       {optimisticBookings.map((booking) => (
         <ReservationCard
