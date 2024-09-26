@@ -70,7 +70,12 @@ export async function updateBooking(formData) {
   redirect("/account/reservations");
 }
 
-export async function deleteReservation(bookingId) {
+export async function createBooking(bookingData, formData) {
+  console.log(bookingData);
+  console.log(formData);
+}
+
+export async function deleteBooking(bookingId) {
   //to test optimistic hook
   // await new Promise((res) => setTimeout(res, 2000));
   // throw new Error();
