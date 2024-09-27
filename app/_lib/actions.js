@@ -75,13 +75,21 @@ export async function createBooking(bookingData, formData) {
   if (!session) throw new Error("You must be logged in");
 
   //if formData was a large object, we could use the syntax before: create an object of data from formData:
-  // Object.entries(formData.entries());
+  // const newBookingObject = Object.fromEntries(formData.entries());
 
   const newBooking = {
     ...bookingData,
     guestId: session.user.guestId,
-    numGuests: formData.get("numGuests"),
+    numGuests: Number(formData.get("numGuests")),
+    observations: formData.get("observations").slice(0, 1000),
+    extrasPrice: 0,
+    totalPrice: bookingData.cabinPrice,
+    isPaid: false,
+    hasBreakfast: false,
+    status: "unconfirmed",
   };
+
+  console.log(newBooking);
 }
 
 export async function deleteBooking(bookingId) {
